@@ -46,6 +46,15 @@ async function run() {
       res.send(products);
     })
 
+    // Add Your Product
+
+    app.post('/product', async (req, res) => {
+      const product = req.body;
+      const result = await productsCollection.insertOne(product);
+      res.send(result);
+    })
+
+
     // Load Single Prodcut from database
     app.get("/product/:id", async (req, res) => {
       const id = req.params.id;
